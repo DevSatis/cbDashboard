@@ -1,0 +1,31 @@
+.headWrapper{
+    width: 100%;
+    height: 120px;   
+}
+hr {
+    border-top: 1.5px solid lightgray;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+.left{
+    display: flex;
+    gap:16px;
+    
+}
+.right{
+    display: flex;
+    gap:16px; 
+}
+
+@media (min-width: 599px) {
+  
+
+    
+}
