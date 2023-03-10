@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" type="text/css" href="index.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -16,25 +18,159 @@
                 <div class="left">
                     <span>CogBooks</span>
                     <span>|</span>
-                    <span>Dashboard</span>
+                    <span class="dashb">Dashboard</span>
                 </div>
                 <div class="right">
                     <span>Instr</span>
                     <div class="icon">icon</div>
-                </div>  
+                </div>
             </header>
             <hr>
             <div class="tabs">
-                <ul>
-                    <li></li>
-                    <li></li>
-                    <li></li>
+                <span>icon</span>
+                <ul class="h_ul">
+                    <li>Engagement</li>
+                    <li>Progress</li>
+                    <li>Performance</li>
                 </ul>
-
             </div>
         </div>
-        
+        <div class="courseDetail">
+            <div class="courseName">
+                Course Detail
+            </div>
+            <div class="downloadButton">
+                <button>Download Report</button>
+            </div>
+        </div>
+        <div class="mainCharts">
+            <div class="firstRow">
+                <div class="leftColoumn">
+                    <canvas id="myDonutChart"></canvas>
+                </div>
+                <div class="rightColoumn">
+                    <canvas id="myLineChart"></canvas>
+                </div>
+            </div>
+            <div class="secondRow">usage</div>
+            <div class="thirdRow">time Spend</div>
+        </div>
     </div>
 </body>
+<script>
+    const donutChart = document.getElementById('myDonutChart');
+
+    new Chart(donutChart, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                'Red',
+                'Blue',
+                'Yellow'
+            ],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [300, 50, 100],
+                backgroundColor: [
+                    'rgb(255, 99, 132)',
+                    'rgb(54, 162, 235)',
+                    'rgb(255, 205, 86)'
+                ],
+                hoverOffset: 4
+            }]
+        },
+        options: {
+            plugins: {
+                legend: {
+                    position: "top",
+                    align: 'start',
+                    labels: {
+                        usePointStyle: true,
+                    },
+                }
+            }
+
+        },
+    });
+</script>
+<script>
+    const lineChart = document.getElementById('myLineChart');
+
+    new Chart(lineChart, {
+        type: 'line',
+        data: {
+            labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+            datasets: [{
+                label: 'My First Dataset',
+                data: [65, 59, 80, 81, 56, 55, 40],
+                fill: false,
+                borderColor: 'rgb(75, 192, 192)',
+                tension: 0.1
+            },
+            {
+                label: 'My second Dataset',
+                data: [, 80, 75, 60, 22, 11, 70],
+                fill: false,
+                borderColor: 'rgb(600, 100, 192)',
+                tension: 0.1
+            },
+            {
+                label: 'My  3rd dataset',
+                data: [, 71, 16, 32, 20, 40, 66],
+                fill: false,
+                borderColor: 'rgb(120, 100, 192)',
+                tension: 0.1
+            },
+            {
+                label: 'My 4th Dataset',
+                data: [, , , 38, 58, 67, 90],
+                fill: false,
+                borderColor: 'rgb(527, 117, 389)',
+                tension: 0.1
+            },
+
+
+            ]
+        },
+        options: {
+            responsive: true,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            stacked: false,
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Chart.js Line Chart - Multi Axis'
+                },
+                legend: {
+                    position: "top",
+                    align: 'end',
+                    labels: {
+                        usePointStyle: true,
+                    },
+                }
+            },
+            scales: {
+                y: {
+                    type: 'linear',
+                    display: true,
+                    position: 'left',
+                },
+                y1: {
+                    type: 'linear',
+                    display: false,
+                    position: 'right',
+
+                    // grid line settings
+                    grid: {
+                        drawOnChartArea: false, // only want the grid lines for one axis to show up
+                    },
+                },
+            }
+        },
+    });
+</script>
 
 </html>
